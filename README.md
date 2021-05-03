@@ -28,7 +28,7 @@ The answer is right there on the top. **This is an open source project**. which 
 If you don't trust the executable files I've provided below, you can grab the modified files and inject it manually in your `app.asar` file. 
 
 -   [All releases (with source)](https://github.com/valnoxy/wadark/releases) 
--   Windows (x86 & x64) - [Download](https://github.com/valnoxy/wadark/releases/download/2.2114.9/WADark-2.2114.9-Windows.zip) 
+-   Windows (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/2.2114.9/WADark-2.2114.9-Windows.zip) 
 -   macOS (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/2.2114.9/WADark-2.2114.9-macOS.zip)
 
 ## Installation & Removal
@@ -39,12 +39,8 @@ Select `Uninstall WADark and restore backup` if you want to return to the previo
 
 ## To-do list
 - Publish the first version.
-- Inject the styles directly.
+- ~Inject the styles directly.~
 - Multiple themes.
-
-## Known issues
-**macOS & Windows:**
-- At this moment WADark replace the entire `app.asar` file. 
 
 ## Credits
  - **m4heshd**: Idea of this project
