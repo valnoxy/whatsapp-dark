@@ -23,7 +23,7 @@ A new dark mode for WhatsApp desktop (macOS &amp; Windows)
 The answer is right there on the top. **This is an open source project**. which literally means that you can see through the source code of this mod. So **I CANNOT STEAL YOUR MESSEGES, I CANNOT TAP INTO YOUR CALLS**.
 
 ## Downloads
-⚠ **NOTE:** _WADark IS NOT AVAILABLE YET!_
+⚠ **NOTE:** _WADark IS ONLY FOR WINDOWS AVAILABLE YET!_
 
 If you don't trust the executable files I've provided below, you can grab the modified files and inject it manually in your `app.asar` file. 
 
@@ -38,7 +38,7 @@ Simply start the exetuable and select `Install WADark`.
 Select `Uninstall WADark and restore backup` if you want to return to the previous state.
 
 ## To-do list
-- Publish the first version.
+- ~Publish the first version.~
 - ~Inject the styles directly.~
 - Multiple themes.
 
