@@ -28,8 +28,8 @@ The answer is right there on the top. **This is an open source project**. which 
 If you don't trust the executable files I've provided below, you can grab the modified files and inject it manually in your `app.asar` file. 
 
 -   [All releases (with source)](https://github.com/valnoxy/wadark/releases) 
--   Windows (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/2.2114.9/WADark-2.2114.9-Windows.zip) 
--   macOS (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/2.2114.9/WADark-2.2114.9-macOS.zip)
+-   Windows (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.0/WADark_Injector_V1.0.zip) 
+-   macOS (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.0/WADark_Injector_V1.0.zip)
 
 ## Installation & Removal
 Make sure you have [WhatsApp Desktop](https://www.whatsapp.com/download/) installed in your PC or Mac first.
