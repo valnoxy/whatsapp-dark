@@ -2,7 +2,7 @@
 
 A new dark mode for WhatsApp desktop (macOS &amp; Windows)
 
-**Latest version:** `2.2119.6`
+**Latest version:** `2.2121.5`
 (Check if this version matches with your version of WhatsApp. The mod **won't**  work if the versions doesn't match)
 
 ⚠ **Please note that this tool won't work with Microsoft Store or App Store version of WhatsApp Desktop. You need to use the direct downloaded version linked [here](https://www.whatsapp.com/download/).**
@@ -43,7 +43,7 @@ Select `Uninstall WADark and restore backup` if you want to return to the previo
 - Multiple themes.
 
 ## Credits
- - **m4heshd**: Idea of this project
+ - **m4heshd**: Idea of this project ([Original Project](https://github.com/m4heshd/whatsapp-desktop-dark))
 
 ## License
 WADark is licensed under [MIT License](https://github.com/valnoxy/wadark/blob/main/LICENSE). So you are allowed to use freely and modify the application. I will not be responsible for any outcome. Proceed with any action at your own risk.
