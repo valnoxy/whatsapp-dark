@@ -2,7 +2,7 @@
 
 A new dark mode for WhatsApp desktop (macOS &amp; Windows)
 
-**Latest version:** `2.2121.5`
+**Latest version:** `2.2121.6`
 (Check if this version matches with your version of WhatsApp. The mod **won't**  work if the versions doesn't match)
 
 ⚠ **Please note that this tool won't work with Microsoft Store or App Store version of WhatsApp Desktop. You need to use the direct downloaded version linked [here](https://www.whatsapp.com/download/).**
