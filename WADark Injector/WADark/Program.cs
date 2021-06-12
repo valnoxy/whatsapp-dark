@@ -14,6 +14,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Runtime.InteropServices;
 using Newtonsoft.Json;
 
 namespace WADark
@@ -24,7 +25,6 @@ namespace WADark
         {
             public string waversion { get; set; }
             public string node_win { get; set; }
-            public string node_mac { get; set; }
             public string css_filename1 { get; set; }
             public string css_dl1 { get; set; }
             public string css_filename2 { get; set; }
@@ -60,7 +60,7 @@ namespace WADark
             {
                 var ver = _download_serialized_json_data<VersionData>(url);
 
-                Console.WriteLine("WADark [Version: {0} (Alpha Version)]", ver.waversion);
+                Console.WriteLine("WADark [Version: {0} (Beta Version)]", ver.waversion);
             }
             catch (Exception ex)
             {
@@ -112,7 +112,7 @@ namespace WADark
             try
             {
                 var ver = _download_serialized_json_data<VersionData>(url);
-                Console.WriteLine("WADark [Version: {0} (Alpha Version)]\n", ver.waversion);
+                Console.WriteLine("WADark [Version: {0} (Beta Version)]\n", ver.waversion);
             }
             catch (Exception ex)
             {
@@ -167,7 +167,7 @@ namespace WADark
             {
                 var ver = _download_serialized_json_data<VersionData>(url);
 
-                Console.WriteLine("WADark [Version: {0} (Alpha Version)]\n", ver.waversion);
+                Console.WriteLine("WADark [Version: {0} (Beta Version)]\n", ver.waversion);
             }
             catch (Exception ex)
             {
@@ -225,39 +225,21 @@ namespace WADark
 
         private static void CheckSys()
         {
+            var tempNodeJS = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "nodejs.msi");
+            var tempHomebrew = "/Users/" + Environment.UserName + "/Library/Preferences/Exploitox/WADark/Homebrew.sh";
+
             // Check WhatsApp version
             var ver = _download_serialized_json_data<VersionData>(url);
             string waVer = "app-" + ver.waversion;
-            var waDir = Path.Combine(Environment.GetFolderPath(
-                Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer);
 
-            // Check if node.js is installed
-            var tempDir = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark");
-            var tempNodeJS = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "nodejs.msi");
-            Directory.CreateDirectory(tempDir);
-            if (!File.Exists("C:\\Program Files\\nodejs\\npx.cmd"))
+            var waDir = "";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Console.WriteLine("    --> node.js not found. Downloading ...");
-                using (var w = new WebClient())
-                {
-                    w.DownloadFile(ver.node_win, tempNodeJS);
-                }
-                Console.WriteLine("    --> Installing silent ...");
-                System.Diagnostics.Process p = new System.Diagnostics.Process();
-                p.StartInfo.FileName = "msiexec.exe";
-                p.StartInfo.Arguments = "/qn /l* " + tempDir + "\\nodejs_install.log /i " + tempNodeJS;
-                p.StartInfo.Verb = "runas";
-                p.StartInfo.UseShellExecute = true;
-                p.Start();
-                p.WaitForExit();
-
-                if (p.ExitCode != 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("[!] Error: An error has occurred: " + p.ExitCode);
-                    System.Threading.Thread.Sleep(5000);
-                    Environment.Exit(1);
-                }
+                waDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer);
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                waDir = "/Applications/WhatsApp.app/Contents/Resources";
             }
 
             if (!Directory.Exists(waDir)) 
@@ -273,33 +255,97 @@ namespace WADark
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("    --> WhatsApp Version {0} found.", ver.waversion);
             }
+
+            // Check if node.js is installed
+            // If platform is Windows
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                if (!File.Exists(Path.GetPathRoot(Environment.SystemDirectory) + "Program Files\\nodejs\\npx.cmd"))
+                {
+                    Console.WriteLine("    --> node.js (npm) not found. Downloading ...");
+                    using (var w = new WebClient())
+                    {
+                        w.DownloadFile(ver.node_win, tempNodeJS);
+                    }
+                    Console.WriteLine("    --> Installing node.js ...");
+                    Process p = new Process();
+                    p.StartInfo.FileName = "msiexec.exe";
+                    p.StartInfo.Arguments = "/i " + tempNodeJS + " /quiet /qn";
+                    p.Start();
+                    p.WaitForExit();
+                }
+            }
+
+            // If platform is OSX
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                Directory.CreateDirectory("/Users/" + Environment.UserName + "/Library/Preferences/Exploitox/WADark");
+                if (!File.Exists("/usr/local/bin/npm"))
+                {
+                    Console.WriteLine("    --> node.js (npm) not found. Downloading ...");
+                    if (!File.Exists("/usr/local/homebrew"))
+                    {
+                        Console.WriteLine("    --> Installing Homebrew ...");
+                        using (var w = new WebClient())
+                        {
+                            w.DownloadFile("https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh", tempHomebrew);
+                        }
+                        Process pHB = new Process();
+                        pHB.StartInfo.FileName = "/bin/bash";
+                        pHB.StartInfo.Arguments = tempHomebrew;
+                        pHB.Start();
+                        pHB.WaitForExit();
+                    }
+                    Console.WriteLine("    --> Installing node.js ...");
+                    Process p = new Process();
+                    p.StartInfo.FileName = "/bin/bash";
+                    p.StartInfo.Arguments = "-c \"brew install node\"";
+                    p.Start();
+                    p.WaitForExit();
+                }
+            }
         }
 
         private static void BackupAsar()
         {
             var ver = _download_serialized_json_data<VersionData>(url);
             string waVer = "app-" + ver.waversion;
-            var waAsar = Path.Combine(Environment.GetFolderPath(
-                Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar");
-            var waAsarBkg = Path.Combine(Environment.GetFolderPath(
-                 Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar.bkg");
-            var tempDir = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract");
 
+            var waAsar = "";
+            var waAsarBkg = "";
+            var tempDir = "";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                waAsar = Path.Combine(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar");
+                waAsarBkg = Path.Combine(Environment.GetFolderPath(
+                     Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar.bkg");
+                tempDir = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract");
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                waAsar = "/Applications/WhatsApp.app/Contents/Resources/app.asar";
+                waAsarBkg = "/Users/" + Environment.UserName + "/Library/Preferences/Exploitox/WADark/app.asar.bkg";
+                tempDir = "/tmp/Exploitox/WADark/asar_extract";
+
+                Directory.CreateDirectory(tempDir);
+            }
             // Extract asar file with npx
             try
             {
-                System.Diagnostics.Process p = new System.Diagnostics.Process();
-                p.StartInfo.FileName = "C:\\Program Files\\nodejs\\npx.cmd";
-                p.StartInfo.Arguments = "npx asar extract " + waAsar + " " + tempDir;
+                Process p = new Process();
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    p.StartInfo.FileName = Path.GetPathRoot(Environment.SystemDirectory) + "Program Files\\nodejs\\npx.cmd";
+                    p.StartInfo.Arguments = "npx asar extract " + waAsar + " " + tempDir;
+                }
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    p.StartInfo.FileName = "/bin/bash";
+                    p.StartInfo.Arguments = "-c \"npx asar extract " + waAsar + " " + tempDir + "\"";
+                }
                 p.Start();
                 p.WaitForExit();
-                if (p.ExitCode != 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("[!] Error: An error has occurred: " + p.ExitCode);
-                    System.Threading.Thread.Sleep(5000);
-                    Environment.Exit(1);
-                }
             }
             catch
             {
@@ -325,16 +371,32 @@ namespace WADark
         private static void PatchAsar()
         {
             var ver = _download_serialized_json_data<VersionData>(url);
-            var tempDir = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract");
-            var tempNodeJS = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "nodejs.msi");
             string waVer = "app-" + ver.waversion;
-            var waAsar = Path.Combine(Environment.GetFolderPath(
-                Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar");
-            var waAsarBkg = Path.Combine(Environment.GetFolderPath(
-                 Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar.bkg");
-            var tempCSS1 = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract", ver.css_filename1);
-            var tempCSS2 = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract", ver.css_filename2);
-            var tempIndex = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract", ver.index_filename);
+            var tempDir = "";
+            var waAsar = "";
+            var tempCSS1 = "";
+            var tempCSS2 = "";
+            var tempIndex = "";
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                tempDir = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract");
+                waAsar = Path.Combine(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar");
+                tempCSS1 = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract", ver.css_filename1);
+                tempCSS2 = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract", ver.css_filename2);
+                tempIndex = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract", ver.index_filename);
+
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                waAsar = "/Applications/WhatsApp.app/Contents/Resources/app.asar";
+                tempDir = "/tmp/Exploitox/WADark/asar_extract/";
+
+                tempCSS1 = tempDir + ver.css_filename1;
+                tempCSS2 = tempDir + ver.css_filename2;
+                tempIndex = tempDir + ver.index_filename;
+            }
 
             // Patch extracted files
             try
@@ -363,18 +425,19 @@ namespace WADark
             // Create new asar file with npx
             try
             {
-                System.Diagnostics.Process p = new System.Diagnostics.Process();
-                p.StartInfo.FileName = "C:\\Program Files\\nodejs\\npx.cmd";
-                p.StartInfo.Arguments = "npx asar pack " + tempDir + " " + waAsar;
+                Process p = new Process();
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    p.StartInfo.FileName = Path.GetPathRoot(Environment.SystemDirectory) + "Program Files\\nodejs\\npx.cmd";
+                    p.StartInfo.Arguments = "npx asar pack " + tempDir + " " + waAsar;
+                }
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    p.StartInfo.FileName = "/bin/bash"; 
+                    p.StartInfo.Arguments = "-c \"npx asar pack " + tempDir + " " + waAsar + "\"";
+                }
                 p.Start();
                 p.WaitForExit();
-                if (p.ExitCode != 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("[!] Error: An error has occurred: " + p.ExitCode);
-                    System.Threading.Thread.Sleep(5000);
-                    Environment.Exit(1);
-                }
             }
             catch
             {
@@ -389,9 +452,16 @@ namespace WADark
         {
             var ver = _download_serialized_json_data<VersionData>(url);
             string waVer = "app-" + ver.waversion;
-            var waAsar = Path.Combine(Environment.GetFolderPath(
-                Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar");
-
+            var waAsar = "";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                waAsar = Path.Combine(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar");
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                waAsar = "/Applications/WhatsApp.app/Contents/Resources/app.asar";
+            }
             try
             {
                 File.Delete(waAsar);
@@ -409,11 +479,20 @@ namespace WADark
         {
             var ver = _download_serialized_json_data<VersionData>(url);
             string waVer = "app-" + ver.waversion;
-            var waAsar = Path.Combine(Environment.GetFolderPath(
-                Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar");
-            var waAsarBkg = Path.Combine(Environment.GetFolderPath(
-                 Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar.bkg");
-
+            var waAsar = "";
+            var waAsarBkg = "";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                waAsar = Path.Combine(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar");
+                waAsarBkg = Path.Combine(Environment.GetFolderPath(
+                     Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar.bkg");
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                waAsar = "/Applications/WhatsApp.app/Contents/Resources/app.asar";
+                waAsarBkg = "/Users/" + Environment.UserName + "/Library/Preferences/Exploitox/WADark/app.asar.bkg";
+            }
             try
             {
                 File.Move(waAsarBkg, waAsar);

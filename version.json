@@ -1,10 +1,10 @@
 {
-    "waversion": "2.2121.6",
+    "waversion": "2.2121.7",
     "node_win": "https://nodejs.org/dist/v14.16.1/node-v14.16.1-x64.msi",
     "css_filename1": "renderer-dcaadd0a3459b6a5c32d.css",
-    "css_dl1": "https://dl.exploitox.de/whatsapp-dark/v2.2121.6/v1/renderer.txt",
+    "css_dl1": "https://dl.exploitox.de/whatsapp-dark/v2.2121.7/v1/renderer.txt",
     "css_filename2": "bootstrap_main.d9787bded94a58ab1fc0.css",
-    "css_dl2": "https://dl.exploitox.de/whatsapp-dark/v2.2121.6/v1/bootstrap.txt",
+    "css_dl2": "https://dl.exploitox.de/whatsapp-dark/v2.2121.7/v1/bootstrap.txt",
     "index_filename": "index.html",
-    "index_dl": "https://dl.exploitox.de/whatsapp-dark/v2.2121.6/v1/index.txt"
+    "index_dl": "https://dl.exploitox.de/whatsapp-dark/v2.2121.7/v1/index.txt"
 }

@@ -2,7 +2,7 @@
 
 A new dark mode for WhatsApp desktop (macOS &amp; Windows)
 
-**Latest version:** `2.2121.6`
+**Latest version:** `2.2121.7`
 (Check if this version matches with your version of WhatsApp. The mod **won't**  work if the versions doesn't match)
 
 ⚠ **Please note that this tool won't work with Microsoft Store or App Store version of WhatsApp Desktop. You need to use the direct downloaded version linked [here](https://www.whatsapp.com/download/).**
@@ -16,20 +16,17 @@ A new dark mode for WhatsApp desktop (macOS &amp; Windows)
 ![WhatsApp Desktop Dark Mode Windows](https://dl.exploitox.de/whatsapp-dark/macOS.png)
 
 ### DISCLAIMER:
-
 > **This is not an official version of WhatsApp Desktop Dark mode. So make sure to read through this document before you use this mod because I won't be responsible for any damage you've done yourself trying to install this mod. The coding/styling behind this tool has full transparency since I've made it open-source right here.**
-> 
+
 ## Is this safe?
 The answer is right there on the top. **This is an open source project**. which literally means that you can see through the source code of this mod. So **I CANNOT STEAL YOUR MESSEGES, I CANNOT TAP INTO YOUR CALLS**.
 
 ## Downloads
-⚠ **NOTE:** _WADark IS ONLY FOR WINDOWS AVAILABLE YET!_
-
 If you don't trust the executable files I've provided below, you can grab the modified files and inject it manually in your `app.asar` file. 
 
 -   [All releases (with source)](https://github.com/valnoxy/wadark/releases) 
--   Windows (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.0/WADark_Injector_V1.0.zip) 
--   macOS (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.0/WADark_Injector_V1.0.zip)
+-   Windows (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.1/WADark_Injector_V1.1_win.zip) 
+-   macOS (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.1/WADark_Injector_V1.1_osx.zip)
 
 ## Installation & Removal
 Make sure you have [WhatsApp Desktop](https://www.whatsapp.com/download/) installed in your PC or Mac first.
