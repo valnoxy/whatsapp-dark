@@ -13,7 +13,7 @@ A new dark mode for WhatsApp desktop (macOS &amp; Windows)
 ![WhatsApp Desktop Dark Mode Windows](https://dl.exploitox.de/whatsapp-dark/Windows.png)
 <h4 align="center">macOS<h4>
   
-![WhatsApp Desktop Dark Mode Windows](https://dl.exploitox.de/whatsapp-dark/macOS.png)
+![WhatsApp Desktop Dark Mode Windows](https://dl.exploitox.de/whatsapp-dark/macOSV1.png)
 
 ### DISCLAIMER:
 > **This is not an official version of WhatsApp Desktop Dark mode. So make sure to read through this document before you use this mod because I won't be responsible for any damage you've done yourself trying to install this mod. The coding/styling behind this tool has full transparency since I've made it open-source right here.**
