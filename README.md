@@ -2,7 +2,10 @@
 
 A new dark mode for WhatsApp desktop (macOS &amp; Windows)
 
-**Latest version:** `2.2121.7`
+**Latest WhatsApp version:** `2.2123.7`
+
+**Latest WADark Injector version:** `1.1.1`
+
 (Check if this version matches with your version of WhatsApp. The mod **won't**  work if the versions doesn't match)
 
 ⚠ **Please note that this tool won't work with Microsoft Store or App Store version of WhatsApp Desktop. You need to use the direct downloaded version linked [here](https://www.whatsapp.com/download/).**
@@ -25,8 +28,8 @@ The answer is right there on the top. **This is an open source project**. which 
 If you don't trust the executable files I've provided below, you can grab the modified files and inject it manually in your `app.asar` file. 
 
 -   [All releases (with source)](https://github.com/valnoxy/wadark/releases) 
--   Windows (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.1/WADark_Injector_V1.1_win.zip) 
--   macOS (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.1/WADark_Injector_V1.1_osx.zip)
+-   Windows (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.1.1/WADark_Injector_V1.1.1_win.zip) 
+-   macOS (x64) - [Download](https://github.com/valnoxy/wadark/releases/download/v1.1.1/WADark_Injector_V1.1.1_osx.zip)
 
 ## Installation & Removal
 Make sure you have [WhatsApp Desktop](https://www.whatsapp.com/download/) installed in your PC or Mac first.

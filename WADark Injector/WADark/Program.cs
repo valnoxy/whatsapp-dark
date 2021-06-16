@@ -260,6 +260,10 @@ namespace WADark
             // If platform is Windows
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
+                // Create temp directory
+                string tempDir = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract");
+                Directory.CreateDirectory(tempDir);
+
                 if (!File.Exists(Path.GetPathRoot(Environment.SystemDirectory) + "Program Files\\nodejs\\npx.cmd"))
                 {
                     Console.WriteLine("    --> node.js (npm) not found. Downloading ...");
@@ -270,7 +274,9 @@ namespace WADark
                     Console.WriteLine("    --> Installing node.js ...");
                     Process p = new Process();
                     p.StartInfo.FileName = "msiexec.exe";
-                    p.StartInfo.Arguments = "/i " + tempNodeJS + " /quiet /qn";
+                    p.StartInfo.Arguments = "/qn /l* " + tempDir + "\\nodejs_install.log /i " + tempNodeJS;
+                    p.StartInfo.Verb = "runas";
+                    p.StartInfo.UseShellExecute = true;
                     p.Start();
                     p.WaitForExit();
                 }
@@ -279,6 +285,10 @@ namespace WADark
             // If platform is OSX
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
+                // Create temp directory
+                string tempDir = "/tmp/Exploitox/WADark/asar_extract";
+                Directory.CreateDirectory(tempDir);
+
                 Directory.CreateDirectory("/Users/" + Environment.UserName + "/Library/Preferences/Exploitox/WADark");
                 if (!File.Exists("/usr/local/bin/npm"))
                 {
@@ -321,14 +331,13 @@ namespace WADark
                 waAsarBkg = Path.Combine(Environment.GetFolderPath(
                      Environment.SpecialFolder.LocalApplicationData), "WhatsApp", waVer, "resources", "app.asar.bkg");
                 tempDir = Path.Combine(Path.GetTempPath(), "Exploitox", "WADark", "asar_extract");
+                Directory.CreateDirectory(tempDir);
             }
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 waAsar = "/Applications/WhatsApp.app/Contents/Resources/app.asar";
                 waAsarBkg = "/Users/" + Environment.UserName + "/Library/Preferences/Exploitox/WADark/app.asar.bkg";
                 tempDir = "/tmp/Exploitox/WADark/asar_extract";
-
-                Directory.CreateDirectory(tempDir);
             }
             // Extract asar file with npx
             try
