@@ -2,7 +2,7 @@
 
 A new dark mode for WhatsApp desktop (macOS &amp; Windows)
 
-**Latest WhatsApp version:** `2.2123.7`
+**Latest WhatsApp version:** `2.2123.8`
 
 **Latest WADark Injector version:** `1.1.1`
 
