@@ -32,7 +32,59 @@ namespace WADark
             public string index_filename { get; set; }
             public string index_dl { get; set; }
         }
-        public static string url = "https://dl.exploitox.de/whatsapp-dark/version.json";
+
+        public class ThemeList
+        {
+            // hard coded version - there is surely a better way...
+            // supports only up to 10 themes
+            public string theme1 { get; set; }
+            public string theme2 { get; set; }
+            public string theme3 { get; set; }
+            public string theme4 { get; set; }
+            public string theme5 { get; set; }
+            public string theme6 { get; set; }
+            public string theme7 { get; set; }
+            public string theme8 { get; set; }
+            public string theme9 { get; set; }
+            public string theme10 { get; set; }
+            public string theme1json { get; set; }
+            public string theme2json { get; set; }
+            public string theme3json { get; set; }
+            public string theme4json { get; set; }
+            public string theme5json { get; set; }
+            public string theme6json { get; set; }
+            public string theme7json { get; set; }
+            public string theme8json { get; set; }
+            public string theme9json { get; set; }
+            public string theme10json { get; set; }
+        }
+
+        public class ThemeData
+        {
+            public string bgcol { get; set; }
+            public string bgcol2 { get; set; }
+            public string bgcol_hover { get; set; }
+            public string titlebar { get; set; }
+            public string textcol { get; set; }
+            public string accent { get; set; }
+            public string accent_hover { get; set; }
+            public string accent_pale { get; set; }
+            public string col_red { get; set; }
+            public string col_green { get; set; }
+            public string col_blue { get; set; }
+            public string msgout { get; set; }
+            public string msgout_deeper { get; set; }
+            public string msgin { get; set; }
+            public string msgin_deeper { get; set; }
+            public string msgbg { get; set; }
+            public string rich_textbg { get; set; }
+            public string msginfo { get; set; }
+        }
+
+        public static string url = "https://dl.exploitox.de/whatsapp-dark/version_v2.json";
+        public static string themeurl = "https://dl.exploitox.de/whatsapp-dark/themes.json";
+
+        public static string themeid_url;
 
         static void Main(string[] args)
         {
@@ -58,7 +110,7 @@ namespace WADark
 
             try
             {
-                var ver = _download_serialized_json_data<VersionData>(url);
+                var ver = _serialized_json_data<VersionData>(url);
 
                 Console.WriteLine("WADark [Version: {0} (Beta Version)]", ver.waversion);
             }
@@ -82,6 +134,7 @@ namespace WADark
             switch (Console.ReadLine())
             {
                 case "1":
+                    ThemeSelection();
                     Install();
                     return false;
 
@@ -98,6 +151,167 @@ namespace WADark
             }
         }
 
+        private static void ThemeSelection()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n ██╗    ██╗ █████╗ ██████╗  █████╗ ██████╗ ██╗  ██╗\n" +
+                " ██║    ██║██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝\n" +
+                " ██║ █╗ ██║███████║██║  ██║███████║██████╔╝█████╔╝ \n" +
+                " ██║███╗██║██╔══██║██║  ██║██╔══██║██╔══██╗██╔═██╗ \n" +
+                " ╚███╔███╔╝██║  ██║██████╔╝██║  ██║██║  ██║██║  ██╗\n" +
+                "  ╚══╝╚══╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝");
+
+            var theme = _serialized_json_data<ThemeList>(themeurl);
+
+            try
+            {
+                var ver = _serialized_json_data<VersionData>(url);
+                Console.WriteLine("WADark [Version: {0} (Beta Version)]\n", ver.waversion);
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("[!] Error: " + ex);
+                System.Threading.Thread.Sleep(3000);
+                Environment.Exit(1);
+            }
+
+            try
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Choose a theme:");
+                if (File.Exists("theme.json"))
+                    Console.WriteLine("   0) Local theme (WADark\\theme.json)");
+                if (!String.IsNullOrEmpty(theme.theme1)) 
+                    Console.WriteLine("   1) {0}", theme.theme1);
+                if (!String.IsNullOrEmpty(theme.theme2))
+                    Console.WriteLine("   2) {0}", theme.theme2);
+                if (!String.IsNullOrEmpty(theme.theme3))
+                    Console.WriteLine("   3) {0}", theme.theme3);
+                if (!String.IsNullOrEmpty(theme.theme4))
+                    Console.WriteLine("   4) {0}", theme.theme4);
+                if (!String.IsNullOrEmpty(theme.theme5))
+                    Console.WriteLine("   5) {0}", theme.theme5);
+                if (!String.IsNullOrEmpty(theme.theme6))
+                    Console.WriteLine("   6) {0}", theme.theme6);
+                if (!String.IsNullOrEmpty(theme.theme7))
+                    Console.WriteLine("   7) {0}", theme.theme7);
+                if (!String.IsNullOrEmpty(theme.theme8))
+                    Console.WriteLine("   8) {0}", theme.theme8);
+                if (!String.IsNullOrEmpty(theme.theme9))
+                    Console.WriteLine("   9) {0}", theme.theme9);
+                if (!String.IsNullOrEmpty(theme.theme10))
+                    Console.WriteLine("  10) {0}", theme.theme10);
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("[!] Error: " + ex);
+                System.Threading.Thread.Sleep(3000);
+                Environment.Exit(1);
+            }
+
+            bool confirmed = false;
+
+            while (!confirmed)
+            {
+                Console.Write("\nSelect a theme: ");
+                string option = Console.ReadLine();
+
+                if (option == "1")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme1))
+                    {
+                        themeid_url = theme.theme1json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+                if (option == "2")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme2))
+                    {
+                        themeid_url = theme.theme2json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+                if (option == "3")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme3))
+                    {
+                        themeid_url = theme.theme3json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+                if (option == "4")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme4))
+                    {
+                        themeid_url = theme.theme4json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+                if (option == "5")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme5))
+                    {
+                        themeid_url = theme.theme5json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+                if (option == "6")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme6))
+                    {
+                        themeid_url = theme.theme6json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+                if (option == "7")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme7))
+                    {
+                        themeid_url = theme.theme7json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+                if (option == "8")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme8))
+                    {
+                        themeid_url = theme.theme8json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+                if (option == "9")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme9))
+                    {
+                        themeid_url = theme.theme9json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+                if (option == "10")
+                {
+                    if (!String.IsNullOrEmpty(theme.theme10))
+                    {
+                        themeid_url = theme.theme10json;
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
+            }
+        }
+
         static void Install()
         {
             Console.Clear();
@@ -111,7 +325,7 @@ namespace WADark
 
             try
             {
-                var ver = _download_serialized_json_data<VersionData>(url);
+                var ver = _serialized_json_data<VersionData>(url);
                 Console.WriteLine("WADark [Version: {0} (Beta Version)]\n", ver.waversion);
             }
             catch (Exception ex)
@@ -165,7 +379,7 @@ namespace WADark
 
             try
             {
-                var ver = _download_serialized_json_data<VersionData>(url);
+                var ver = _serialized_json_data<VersionData>(url);
 
                 Console.WriteLine("WADark [Version: {0} (Beta Version)]\n", ver.waversion);
             }
@@ -207,8 +421,19 @@ namespace WADark
             Environment.Exit(0);
         }
 
-        private static T _download_serialized_json_data<T>(string url) where T : new()
+        private static T _serialized_json_data<T>(string url) where T : new()
         {
+            if (url.Equals("theme.json"))
+            {
+                var json_data = string.Empty;
+                try
+                {
+                    json_data = File.ReadAllText("theme.json");
+                }
+                catch (Exception) { }
+                // if string with JSON data is not empty, deserialize it to class and return its instance 
+                return !string.IsNullOrEmpty(json_data) ? JsonConvert.DeserializeObject<T>(json_data) : new T();
+            }
             using (var w = new WebClient())
             {
                 var json_data = string.Empty;
@@ -229,7 +454,7 @@ namespace WADark
             var tempHomebrew = "/Users/" + Environment.UserName + "/Library/Preferences/Exploitox/WADark/Homebrew.sh";
 
             // Check WhatsApp version
-            var ver = _download_serialized_json_data<VersionData>(url);
+            var ver = _serialized_json_data<VersionData>(url);
             string waVer = "app-" + ver.waversion;
 
             var waDir = "";
@@ -274,9 +499,7 @@ namespace WADark
                     Console.WriteLine("    --> Installing node.js ...");
                     Process p = new Process();
                     p.StartInfo.FileName = "msiexec.exe";
-                    p.StartInfo.Arguments = "/qn /l* " + tempDir + "\\nodejs_install.log /i " + tempNodeJS;
-                    p.StartInfo.Verb = "runas";
-                    p.StartInfo.UseShellExecute = true;
+                    p.StartInfo.Arguments = "/i " + tempNodeJS + " /quiet /qn";
                     p.Start();
                     p.WaitForExit();
                 }
@@ -318,7 +541,7 @@ namespace WADark
 
         private static void BackupAsar()
         {
-            var ver = _download_serialized_json_data<VersionData>(url);
+            var ver = _serialized_json_data<VersionData>(url);
             string waVer = "app-" + ver.waversion;
 
             var waAsar = "";
@@ -339,6 +562,34 @@ namespace WADark
                 waAsarBkg = "/Users/" + Environment.UserName + "/Library/Preferences/Exploitox/WADark/app.asar.bkg";
                 tempDir = "/tmp/Exploitox/WADark/asar_extract";
             }
+
+            // Check if backup already exist
+            if (File.Exists(waAsarBkg))
+            {
+                bool overwrite = false;
+                bool confirmed = false;
+
+                while (!confirmed)
+                {
+                    Console.Write("[!] A backup file already exist. Overwrite? [Y/N]: ");
+                    string option = Console.ReadLine();
+
+                    if (option == "Y" || option == "y")
+                    {
+                        overwrite = true;
+                        confirmed = true;
+                    }
+                    if (option == "N" || option == "n")
+                    {
+                        overwrite = false;
+                        confirmed = true;
+                    }
+                }
+
+                if (overwrite)
+                    File.Delete(waAsarBkg); 
+            }
+
             // Extract asar file with npx
             try
             {
@@ -379,7 +630,7 @@ namespace WADark
 
         private static void PatchAsar()
         {
-            var ver = _download_serialized_json_data<VersionData>(url);
+            var ver = _serialized_json_data<VersionData>(url);
             string waVer = "app-" + ver.waversion;
             var tempDir = "";
             var waAsar = "";
@@ -431,6 +682,39 @@ namespace WADark
                 Environment.Exit(1);
             }
 
+            // Switch values to selected theme
+            try
+            {
+                var themejson = _serialized_json_data<ThemeData>(themeid_url);
+                string style = File.ReadAllText(tempCSS1);
+                style = style.Replace("--bgcol: #000000", "--bgcol: " + themejson.bgcol);
+                style = style.Replace("--bgcol2: #000000", "--bgcol2: " + themejson.bgcol2);
+                style = style.Replace("--bgcol_hover: #000000", "--bgcol_hover: " + themejson.bgcol_hover);
+                style = style.Replace("--titlebar: #000000", "--titlebar: " + themejson.titlebar);
+                style = style.Replace("--textcol: #000000", "--textcol: " + themejson.textcol);
+                style = style.Replace("--accent: #000000", "--accent: " + themejson.accent);
+                style = style.Replace("--accent_hover: #000000", "--accent_hover: " + themejson.accent_hover);
+                style = style.Replace("--accent_pale: #000000", "--accent_pale: " + themejson.accent_pale);
+                style = style.Replace("--col_red: #000000", "--col_red: " + themejson.col_red);
+                style = style.Replace("--col_green: #000000", "--col_green: " + themejson.col_green);
+                style = style.Replace("--col_blue: #000000", "--col_blue: " + themejson.col_blue);
+                style = style.Replace("--msgout: #000000", "--msgout: " + themejson.msgout);
+                style = style.Replace("--msgout_deeper: #000000", "--msgout_deeper: " + themejson.msgout_deeper);
+                style = style.Replace("--msgin: #000000", "--msgin: " + themejson.msgin);
+                style = style.Replace("--msgin_deeper: #000000", "--msgin_deeper: " + themejson.msgin_deeper);
+                style = style.Replace("--msgbg: #000000", "--msgbg: " + themejson.msgbg);
+                style = style.Replace("--rich_textbg: #000000", "--rich_textbg: " + themejson.rich_textbg);
+                style = style.Replace("--msginfo: #000000", "--msginfo: " + themejson.msginfo);
+                File.WriteAllText(tempCSS1, style);
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("[!] Error: Cannot modify style file: " + ex);
+                System.Threading.Thread.Sleep(3000);
+                Environment.Exit(1);
+            }
+
             // Create new asar file with npx
             try
             {
@@ -459,7 +743,7 @@ namespace WADark
 
         private static void RemoveAsar()
         {
-            var ver = _download_serialized_json_data<VersionData>(url);
+            var ver = _serialized_json_data<VersionData>(url);
             string waVer = "app-" + ver.waversion;
             var waAsar = "";
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -486,7 +770,7 @@ namespace WADark
 
         private static void RestoreAsar()
         {
-            var ver = _download_serialized_json_data<VersionData>(url);
+            var ver = _serialized_json_data<VersionData>(url);
             string waVer = "app-" + ver.waversion;
             var waAsar = "";
             var waAsarBkg = "";
