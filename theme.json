@@ -1,0 +1,20 @@
+{
+    "bgcol": "#000000",
+    "bgcol2": "#000000",
+    "bgcol_hover": "#000000",
+    "titlebar": "#000000",
+    "textcol": "#ffffff",
+    "accent": "#000000",
+    "accent_hover": "#000000",
+    "accent_pale": "#000000",
+    "col_red": "#dd3b4f",
+    "col_green": "#70A352",
+    "col_blue": "#527AA3",
+    "msgout": "#000000",
+    "msgout_deeper": "000000",
+    "msgin": "#000000",
+    "msgin_deeper": "000000",
+    "msgbg": "#000000",
+    "rich_textbg": "#000000",
+    "msginfo": "#000000"
+}
