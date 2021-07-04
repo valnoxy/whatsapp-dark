@@ -6,7 +6,7 @@
     <br />
     <strong>WhatsApp Version: </strong>2.2123.8
     <br />
-    <strong>Injector Version: </strong>1.2.0
+    <strong>Injector Version: </strong>1.2.1
     <br />
     <br />
     <a href="https://github.com/valnoxy/wadark/releases"><strong>Download now »</strong></a>
@@ -45,7 +45,7 @@ Simply start the executable and select `Install WADark`.
 Select `Uninstall WADark and restore backup` if you want to return to the previous state.
 
 ## 🖌️ Themes
-WADark can apply custom themes to WhatsApp. I include ```2``` different Themes in WADark ([Here is a list of all available themes](https://github.com/valnoxy/t440p-oc/blob/main/THEMES.md)). 
+WADark can apply custom themes to WhatsApp. I include ```2``` different Themes in WADark ([Here is a list of all available themes](https://github.com/valnoxy/wadark/blob/main/THEMES.md)). 
 
 You can also create your own theme! Just clone the ```theme.json``` file and move it to the same directory as WADark. The option ```Local theme``` will appear while patching WhatsApp Desktop.
 

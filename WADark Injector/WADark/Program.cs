@@ -218,6 +218,16 @@ namespace WADark
             {
                 Console.Write("\nSelect a theme: ");
                 string option = Console.ReadLine();
+                
+                if (option == "0")
+                {
+                    if (File.Exists("theme.json"))
+                    {
+                        themeid_url = "theme.json";
+                        confirmed = true;
+                    }
+                    else confirmed = false;
+                }
 
                 if (option == "1")
                 {
@@ -587,7 +597,9 @@ namespace WADark
                 }
 
                 if (overwrite)
-                    File.Delete(waAsarBkg); 
+                    File.Delete(waAsarBkg);
+                if (!overwrite)
+                    Environment.Exit(1);
             }
 
             // Extract asar file with npx

@@ -6,7 +6,7 @@
     <br />
     <strong>WhatsApp Version: </strong>2.2123.8
     <br />
-    <strong>Injector Version: </strong>1.2.0
+    <strong>Injector Version: </strong>1.2.1
     <br />
     <br />
     <a href="https://github.com/valnoxy/wadark/releases"><strong>Download now »</strong></a>
@@ -21,6 +21,10 @@
 </p>
 
 ![-----------------------------------------------------](https://dl.exploitox.de/t440p-oc/rainbow.png)
+
+## Version: 1.2.1
+This release includes WADark Injector V.1.2.1 (Beta) for Windows and macOS.
+- Fixed local theme & Backup
 
 ## Version: 1.2.0
 This release includes WADark Injector V.1.2.0 (Beta) for Windows and macOS.
