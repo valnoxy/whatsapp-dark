@@ -4,7 +4,7 @@
 <p align="center">
     Personalize your WhatsApp (macOS &amp; Windows).
     <br />
-    <strong>WhatsApp Version: </strong>2.2123.8
+    <strong>WhatsApp Version: </strong>2.2134.10
     <br />
     <strong>Injector Version: </strong>1.2.1
     <br />
