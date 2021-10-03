@@ -1,0 +1,21 @@
+﻿<Window x:Class="WADark.ThemeInstall"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WADark"
+        mc:Ignorable="d"
+        Title="WADark Theme Installer" Height="220" Width="500"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Label Content="Do you want to install this theme?" HorizontalAlignment="Left" Margin="12,5,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="AuthorString" Content="Author: n/a" HorizontalAlignment="Left" Margin="12,45,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NameString" Content="Theme Name: n/a" HorizontalAlignment="Left" Margin="12,64,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="InstallBtn" Content="Install" Margin="356,139,0,0" VerticalAlignment="Top" Width="128" Click="InstallBtn_Click"/>
+        <Button x:Name="CloseBtn" Content="Cancel" Margin="223,139,0,0" VerticalAlignment="Top" Width="128" Click="CloseBtn_Click"/>
+
+        <ui:ProgressBar x:Name="ProgressB" Margin="10,164,279,15" Height="12" Visibility="Hidden"/>
+        <Label x:Name="StatusTxt" Content="Status: n/a" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+    </Grid>
+</Window>

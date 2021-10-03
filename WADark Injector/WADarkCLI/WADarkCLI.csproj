@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <Platforms>AnyCPU</Platforms>
+    <ApplicationIcon>WADark.ico</ApplicationIcon>
+    <Authors>valnoxy</Authors>
+    <Company>Exploitox - Unleash your exploits!</Company>
+    <Copyright>Copyright (c) 2018 - 2021 Exploitox. All rights reserved.</Copyright>
+    <PackageIcon>WADark.ico</PackageIcon>
+    <PackageIconUrl />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Pictures\Logos\WADark\WADark.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

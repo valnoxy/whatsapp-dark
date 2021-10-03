@@ -1,0 +1,25 @@
+﻿<Window x:Class="WADark.Installation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WADark"
+        mc:Ignorable="d"
+        Title="WADark Injector" Height="220" Width="500"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Label Content="Do you want to Install WADark?" HorizontalAlignment="Left" Margin="12,5,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="NameString" Content="WhatsApp Desktop Version: n/a" HorizontalAlignment="Left" Margin="12,45,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="InstallBtn" Content="Install" Margin="356,139,0,0" VerticalAlignment="Top" Width="128" Click="InstallBtn_Click"/>
+        <Button x:Name="CloseBtn" Content="Cancel" Margin="223,139,0,0" VerticalAlignment="Top" Width="128" Click="CloseBtn_Click"/>
+
+        <ui:ProgressBar x:Name="ProgressB" Margin="10,164,279,15" Height="12" Visibility="Hidden"/>
+        <Label x:Name="StatusTxt" Content="Status: n/a" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="InfoTxt" HorizontalAlignment="Left" Margin="12,70,0,0" VerticalAlignment="Top" Width="472" Height="40">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap" Text="This will apply the default theme and install the Protocol for installing themes." Width="371"/>
+            </Label.Content>
+        </Label>
+    </Grid>
+</Window>

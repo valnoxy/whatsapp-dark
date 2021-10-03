@@ -1,23 +1,68 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
-    <ApplicationIcon>wadark.ico</ApplicationIcon>
-    <RuntimeIdentifiers>win10-x64;osx-x64</RuntimeIdentifiers>
-    <Platforms>AnyCPU;x64</Platforms>
-    <Authors>valnoxy</Authors>
-    <Company>Exploitox - Unleash your exploits!</Company>
-    <Copyright>Copyright (c) 2018 - 2021 Exploitox. All rights reserved.</Copyright>
-    <RepositoryUrl>https://github.com/valnoxy/wadark</RepositoryUrl>
-    <Version>1.1.1</Version>
-    <AssemblyVersion>1.1.1</AssemblyVersion>
-    <FileVersion>1.1.1</FileVersion>
-    <Configurations>Debug;Release;ReleaseSingle</Configurations>
+    <OutputType>WinExe</OutputType>
+	  <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+	  <UseWPF>true</UseWPF>
+	  <Authors>valnoxy</Authors>
+	  <Company>Exploitox - Unleash your exploits!</Company>
+	  <Copyright>Copyright (c) 2018 - 2021 Exploitox. All rights reserved.</Copyright>
+	  <PackageIcon>WADark.ico</PackageIcon>
+	  <PackageIconUrl />
+	  <ApplicationIcon>C:\Users\jonas\Pictures\Logos\WADark\WADark.ico</ApplicationIcon>
+	  <ApplicationManifest>app.manifest</ApplicationManifest>
+	  <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ModernWpfUI" Version="0.9.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="App.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ErrorMessage.xaml.cs">
+      <DependentUpon>ErrorMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Installation.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Installation.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ThemeInstall.xaml.cs">
+      <DependentUpon>ThemeInstall.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ErrorMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Installation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="ThemeInstall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Pictures\Logos\WADark\WADark.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

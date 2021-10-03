@@ -1,4 +1,4 @@
-<h1 align="center"><br><img src="https://dl.exploitox.de/whatsapp-dark/mockup_wadark.png" alt="WhatsApp Desktop Dark Mode" width="499" height="398"></h1>
+<h1 align="center"><br><img src="https://dl.exploitox.de/whatsapp-dark/banner_black.png" alt="WhatsApp Desktop Dark Mode"></h1>
 
 <h3 align="center">WhatsApp Desktop Dark Mode (WADark)</h3>
 <p align="center">
@@ -6,7 +6,7 @@
     <br />
     <strong>WhatsApp Version: </strong>2.2134.10
     <br />
-    <strong>Injector Version: </strong>1.2.1
+    <strong>Injector Version: </strong>1.3.0
     <br />
     <br />
     <a href="https://github.com/valnoxy/wadark/releases"><strong>Download now »</strong></a>
@@ -42,12 +42,23 @@ Check if this version matches with your version of WhatsApp. The mod **won't**  
 Make sure you have [WhatsApp Desktop](https://www.whatsapp.com/download/) installed on your PC or Mac first.
 Simply start the executable and select `Install WADark`. 
 
-Select `Uninstall WADark and restore backup` if you want to return to the previous state.
+Simply reinstall WhatsApp Desktop, if you want to remove WADark.
 
 ## 🖌️ Themes
-WADark can apply custom themes to WhatsApp. I include ```2``` different Themes in WADark ([Here is a list of all available themes](https://github.com/valnoxy/wadark/blob/main/THEMES.md)). 
+WADark can apply custom themes to WhatsApp. I include ```2``` different Themes in WADark ([Here is a list of all available themes](https://github.com/valnoxy/wadark/blob/main/THEMES.md)). Simply click on "Install with WADark" to apply the theme.
 
-You can also create your own theme! Just clone the ```theme.json``` file and move it to the same directory as WADark. The option ```Local theme``` will appear while patching WhatsApp Desktop.
+You can also create your own theme! Just clone the ```theme.json``` file and move it to the same directory as WADark. The option ```Local theme``` will appear while patching WhatsApp Desktop (only CLI).
+
+```NEW!``` You can create your own theme with the URL Protocol!
+The URL Protocol is build as following:
+
+```
+wadark://valnoxy/myCustomTheme?themedata=%7B%22bgcol%22%3A%22...
+            |           |                          |
+          Author   Theme Name             encoded JSON in URL
+```
+
+I personally use [this site](https://codebeautify.org/json-url-encode) for encoding JSON.
 
 If you want to make your theme available for everyone, submit your theme [here](https://forms.gle/9jsrjFUaE78AeYfGA) or via E-Mail to ```hey@exploitox.de```. After a short review, I will include your theme in the next WADark update!
 

@@ -1,4 +1,4 @@
-<h1 align="center"><br><img src="https://dl.exploitox.de/whatsapp-dark/mockup_wadark.png" alt="WhatsApp Desktop Dark Mode" width="499" height="398"></h1>
+<h1 align="center"><br><img src="https://dl.exploitox.de/whatsapp-dark/banner_black.png" alt="WhatsApp Desktop Dark Mode"></h1>
 
 <h3 align="center">WhatsApp Desktop Dark Mode (WADark)</h3>
 <p align="center">
@@ -6,7 +6,7 @@
     <br />
     <strong>WhatsApp Version: </strong>2.2123.8
     <br />
-    <strong>Injector Version: </strong>1.2.1
+    <strong>Injector Version: </strong>1.3.0
     <br />
     <br />
     <a href="https://github.com/valnoxy/wadark/releases"><strong>Download now »</strong></a>
@@ -21,6 +21,13 @@
 </p>
 
 ![-----------------------------------------------------](https://dl.exploitox.de/t440p-oc/rainbow.png)
+
+## Version: 1.3.0
+This release includes WADark Injector V.1.3.0 for Windows (GUI & CLI) and macOS (CLI)
+- Added GUI for Windows
+- Added URL Protocol ```wadark://``` for Theme installation.
+- Added Silent installation (use switch ```/silent```)
+- Bug fixes
 
 ## Version: 1.2.1
 This release includes WADark Injector V.1.2.1 (Beta) for Windows and macOS.

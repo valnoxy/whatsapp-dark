@@ -1,0 +1,20 @@
+﻿<Window x:Class="WADark.ErrorMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WADark"
+        mc:Ignorable="d"
+        Title="WADark Injector" Height="220" Width="500"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Label Content="An error has occurred ..." HorizontalAlignment="Left" Margin="12,5,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="InfoTxt" HorizontalAlignment="Left" Margin="12,37,0,0" VerticalAlignment="Top" Width="472" Height="97">
+            <Label.Content>
+                <AccessText x:Name="ErrorString" TextWrapping="Wrap" Text="n/a" Width="472" Height="97"/>
+            </Label.Content>
+        </Label>
+        <Button x:Name="CloseBtn" Content="Close" Margin="356,139,0,0" VerticalAlignment="Top" Width="128" Click="CloseBtn_Click"/>
+    </Grid>
+</Window>
