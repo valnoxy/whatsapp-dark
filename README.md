@@ -68,4 +68,4 @@ If you want to make your theme available for everyone, submit your theme [here](
 ## 🧾 License
 WADark is licensed under [MIT License](https://github.com/valnoxy/wadark/blob/main/LICENSE). So you are allowed to use freely and modify the application. I will not be responsible for any outcome. Proceed with any action at your own risk.
 
-```Copyright (c) 2018 - 2021 Exploitox. By Jonas G. <jonas@exploitox.de> ```
+```Copyright (c) 2018 - 2022 Exploitox. By Jonas G. <jonas@exploitox.de> ```
