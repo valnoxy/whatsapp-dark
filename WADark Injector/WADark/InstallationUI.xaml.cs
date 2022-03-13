@@ -29,21 +29,36 @@ namespace WADark
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class Installation : Window
+    public partial class InstallationUI : Window
     {
         public string ThemeName;
         public string ThemeDataJson;
+        public string WAVersion;
 
         public class VersionData
         {
             public string waversion { get; set; }
         }
 
-        public Installation()
+        public InstallationUI()
         {
             InitializeComponent();
+
+            Dispatcher.BeginInvoke(new Action(() => AssignData()));
+        }
+
+        private void AssignData()
+        {
             var ver = _serialized_json_data<VersionData>(url);
-            NameString.Content = $"WhatsApp Desktop Version: {ver.waversion}";
+            WAVersion = ver.waversion;
+
+            int systemstatus = CheckSystem();
+            if (systemstatus == 201)
+            {
+                NameString.Content = "This version is currently not supported by WADark.";
+                InstallBtn.IsEnabled = false;
+            } 
+            else NameString.Content = $"WhatsApp Desktop Version: {WAVersion}";
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)

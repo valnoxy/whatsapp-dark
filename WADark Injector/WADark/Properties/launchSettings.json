@@ -1,8 +1,7 @@
 {
   "profiles": {
     "WADark": {
-      "commandName": "Project",
-      "commandLineArgs": "/InstallTheme wadark://valnoxy/test?themedata=%7B%22bgcol%22%3A%22%23000000%22%2C%22bgcol2%22%3A%22%23111213%22%2C%22bgcol_hover%22%3A%22%23111213%22%2C%22titlebar%22%3A%22%23000000%22%2C%22textcol%22%3A%22%23fff%22%2C%22accent%22%3A%22%235792ff%22%2C%22accent_hover%22%3A%22%235792ff%22%2C%22accent_pale%22%3A%22%235792ff%22%2C%22col_red%22%3A%22%23dd3b4f%22%2C%22col_green%22%3A%22%2370A352%22%2C%22col_blue%22%3A%22%23527AA3%22%2C%22msgout%22%3A%22%23131A25%22%2C%22msgout_deeper%22%3A%22rgb(6%2C+8%2C+12)%22%2C%22msgin%22%3A%22%23131a25%22%2C%22msgin_deeper%22%3A%22rgb(6%2C+8%2C+12)%22%2C%22msgbg%22%3A%22%23000%22%2C%22rich_textbg%22%3A%22%23000%22%2C%22msginfo%22%3A%22%23131a25%22%7D"
+      "commandName": "Project"
     }
   }
 }

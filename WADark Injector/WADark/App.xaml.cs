@@ -55,7 +55,7 @@ namespace WADark
                     {
                         Dispatcher.Invoke(() =>
                         {
-                            ErrorMessage eM = new ErrorMessage("A newer WhatsApp Desktop Version was detected, but it is currently not supported by WADark.");
+                            ErrorMessage eM = new ErrorMessage("A newer WhatsApp Desktop Version was detected, which is currently not supported by WADark.");
                             eM.Show();
                         });
                         Environment.Exit(201);
@@ -127,8 +127,9 @@ namespace WADark
             else
             {
                 // Create Installation window
-                Installation mainWindow = new Installation();
-                mainWindow.Show();
+                InstallationUI inst = new InstallationUI();
+                Console.WriteLine("a");
+                inst.Show();
             }
         }
     }

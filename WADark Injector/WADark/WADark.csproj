@@ -34,9 +34,9 @@
     <Compile Update="ErrorMessage.xaml.cs">
       <DependentUpon>ErrorMessage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Installation.xaml.cs">
+    <Compile Update="InstallationUI.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>Installation.xaml</DependentUpon>
+      <DependentUpon>InstallationUI.xaml</DependentUpon>
     </Compile>
     <Compile Update="ThemeInstall.xaml.cs">
       <DependentUpon>ThemeInstall.xaml</DependentUpon>
@@ -48,7 +48,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Installation.xaml">
+    <Page Update="InstallationUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

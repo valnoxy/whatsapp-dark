@@ -1,4 +1,4 @@
-﻿<Window x:Class="WADark.Installation"
+﻿<Window x:Class="WADark.InstallationUI"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,7 +10,7 @@
         ui:WindowHelper.UseModernWindowStyle="True" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <Grid>
         <Label Content="Do you want to Install WADark?" HorizontalAlignment="Left" Margin="12,5,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label x:Name="NameString" Content="WhatsApp Desktop Version: n/a" HorizontalAlignment="Left" Margin="12,45,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NameString" Content="Loading version ..." HorizontalAlignment="Left" Margin="12,45,0,0" VerticalAlignment="Top"/>
         <Button x:Name="InstallBtn" Content="Install" Margin="356,139,0,0" VerticalAlignment="Top" Width="128" Click="InstallBtn_Click"/>
         <Button x:Name="CloseBtn" Content="Cancel" Margin="223,139,0,0" VerticalAlignment="Top" Width="128" Click="CloseBtn_Click"/>
 
